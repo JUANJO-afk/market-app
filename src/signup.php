@@ -11,31 +11,50 @@
 
   $enc_pass = password_hash($p_wd, PASSWORD_DEFAULT);
 
-  //Step 3.
-  $query = "
-  INSERT INTO users (
-  firstname,
-  lastname,
-  mobile_number,
-  ide_number,
-  email,
-  password)
-  values (
-  '$f_name',
-  '$l_name',
-  '$m_number',
-  '$id_number',
-  '$e_mail',
-  '$enc_pass'
-  )
+  $check_email = "
+    select 
+     u.email 
+    from
+     users u
+    where
+     email = '$e_mail'
+    limit 1
   ";
-  //Step 4.
-  $res = pg_query($conn, $query);
+  $res_check = pg_query($conn,$check_email)
+  if(pg_num_rows($res_check) > 0){
+    echo "<script> alert('Users already exists !!')</script>"; +
+    header('refresh : 0 ; url = signin.html');
+    } else{
+      $query = "
+    INSERT INTO users (
+    firstname,
+    lastname,
+    mobile_number,
+    ide_number,
+    email,
+    password)
+    values (
+    '$f_name',
+    '$l_name',
+    '$m_number',
+    '$id_number',
+    '$e_mail',
+    '$enc_pass'
+    )
+    ";
+    //Step 4.
+    $res = pg_query($conn, $query);
 
-  //Step 5. Validation
-  if(!$res){
-    echo "User has been created successfully !!!";
-  } else {
-    echo "Something wrong";
+    //Step 5. Validation
+    if($res){
+      //echo "User has been created successfully !!!";
+      echo "<script> alert('Sucess !!! Go to login')</script>"; +
+      header('refresh : 0 ; url = signin.html');
+    } else {
+      echo "Something wrong";
+    }
   }
+
+  //Step 3.
+  
 ?>
