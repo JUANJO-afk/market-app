@@ -17,31 +17,32 @@
     from
      users u
     where
-     email = '$e_mail'
+     email = '$e_mail' or ide_number = '$id_number'
     limit 1
   ";
-  $res_check = pg_query($conn,$check_email)
-  if(pg_num_rows($res_check) > 0){
-    echo "<script> alert('Users already exists !!')</script>"; +
-    header('refresh : 0 ; url = signin.html');
-    } else{
+  $res_check = pg_query($conn, $check_email);
+  if (pg_num_rows($res_check) > 0){
+    echo "<script> alert('Users already exists !!')</script>";+
+    header('refresh : 0 ; url = signindnb.html');
+  } else{
+      //Step 3. Create query to insert into
       $query = "
-    INSERT INTO users (
-    firstname,
-    lastname,
-    mobile_number,
-    ide_number,
-    email,
-    password)
-    values (
-    '$f_name',
-    '$l_name',
-    '$m_number',
-    '$id_number',
-    '$e_mail',
-    '$enc_pass'
-    )
-    ";
+          INSERT INTO users (
+          firstname,
+          lastname,
+          mobile_number,
+          ide_number,
+          email,
+          password)
+        values (
+          '$f_name',
+          '$l_name',
+          '$m_number',
+          '$id_number',
+          '$e_mail',
+          '$p_wd'
+        )
+      ";
     //Step 4.
     $res = pg_query($conn, $query);
 
@@ -55,6 +56,6 @@
     }
   }
 
-  //Step 3.
+  
   
 ?>
