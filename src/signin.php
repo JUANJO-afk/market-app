@@ -17,7 +17,7 @@
 	    u.email = '$e_mail'
 	    and u.password = '$p_wd'
     limit 1
-  "
+  ";
   //Step 4
   $res_check = pg_query($conn, $sql_check_user);
   if (pg_num_rows($res_check) > 0){
