@@ -1,4 +1,6 @@
 <?php
+    //Step 1. get database connection
+    require('../config/database.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +19,10 @@
             <th>Status</th>    
             <th>Options </th>    
         </tr>
+        <?php
+            sql_users = "
+            "
+        ?>
         <tr>
             <td>Joan </td>    
             <td>joa@gmail.com </td>    
