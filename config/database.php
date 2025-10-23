@@ -33,10 +33,16 @@
  $conn_supa = pg_connect($supa_data_connection);
  $conn_local = pg_connect($local_data_connection);
 
- if(!$conn_supa){
+ /*if(!$conn_supa){
     echo "error".pg_last_error();
  }else {
     echo "Connection successfully :::";
+
+ }*/
+ if(!$conn_local){
+    echo "error".pg_last_error();
+ }else {
+    //echo "Connection successfully :::";
 
  }
 ?>

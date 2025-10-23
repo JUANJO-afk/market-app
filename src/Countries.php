@@ -15,7 +15,7 @@
     where
      id_country = '$c_code'
     limit 1
-  ";
+  ";*/
   
   $res_check = pg_query($conn_supa);
 
@@ -46,5 +46,5 @@
     } else {
       echo "Something wrong";
     }
-  }*/
+  }
 ?>
