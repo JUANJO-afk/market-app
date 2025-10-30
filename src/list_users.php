@@ -51,7 +51,8 @@
                         <td>".$row['status']."</td>    
                         <td>
                             <a href = '#'><img  src = 'icons/lupa.png' width = '20'><a>
-                            <a href = '#'><img  src = 'icons/update.png' width = '20'><a>
+                            <a href = 'edit_user_form.php?userId=".$row['user_id']."'>
+                            <img  src = 'icons/update.png' width = '20'><a>
                             <a href = 'delete_user.php?userId=".$row['user_id']."'>
                             <img  src = 'icons/delete.png' width = '20'><a>
                         </td>

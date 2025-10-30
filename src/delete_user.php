@@ -9,11 +9,11 @@
     $sql_delete_user="delete from users where id = $user_id";
 
     //Step 4. Execute sql
-    $result=pg_query($conn_local, $sql_users);
+    $result=pg_query($conn_local, $sql_delete_user);
     if(!$result){
         die("Error:::".pg_last_error());
     }else{
-        echo "<script>alert('User has been deleted</script>')"
+        echo"<script>alert('User has been deleted')</script>";
         header('refresh:0;url=list_users.php');
     }
 ?>
