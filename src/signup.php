@@ -10,8 +10,8 @@
   $e_mail = trim($_POST['email']);
   $p_wd = trim($_POST['passwd']);
 
-  $enc_pass = password_hash($p_wd, PASSWORD_DEFAULT);
-  //$enc_pass = md5($p_wd);
+  //$enc_pass = password_hash($p_wd, PASSWORD_DEFAULT);
+  $enc_pass = md5($p_wd);
 
   $check_email = "
     select 
@@ -23,7 +23,7 @@
     limit 1
   ";
   
-  $res_check = pg_query($conn_supa, $check_email);
+  $res_check = pg_query($conn_local, $check_email);
 
   if (pg_num_rows($res_check)>0){
     echo"<script>alert('Users already exists !!')</script>";+
@@ -48,7 +48,7 @@
           )
       ";
     //Step 4.
-    $res = pg_query($conn_supa, $query);
+    $res = pg_query($conn_local, $query);
 
     //Step 5. Validation
     if($res){

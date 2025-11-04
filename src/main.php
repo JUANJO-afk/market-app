@@ -1,5 +1,11 @@
 <?php
     echo "Welcome to main";
+
+    session_start();
+  
+    if(isset($_SESSION('session_user_id'))){
+        header('refresh:0;url=signin.html');
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +17,8 @@
     <link rel   ="icon" type "image/png" href="src/icons/market_main.png"/>
 </head>
 <body>
-    
+    <center><b>User: </b>Here print your name</center>
+    <a href="List_users.php">List all users</a> //
+    <a href="logout.php">Logout</a>
 </body>
 </html>

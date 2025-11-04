@@ -1,8 +1,16 @@
 <?php
   //Step 1. get database connection
   require('../config/database.php');
-  //Step 2. get form-data
+  
+  //Create star session
+  session_start();
+  
+  if(isset($_SESSION('session_user_id'))){
+    header('refresh:0;url=main.php');
+  } else{
+  }
 
+  //Step 2. get form-data
   $e_mail = trim($_POST['email']);
   $p_wd = trim($_POST['passwd']);
   
@@ -12,7 +20,8 @@
   //Step 3 Query Validation
 
   $sql_check_user = "
-    select 
+    select
+      u.id
 	    u.email,
 	    u.password
     from 
@@ -23,7 +32,10 @@
     limit 1
   ";
   //Step 4
-  $res_check = pg_query($conn_supa, $sql_check_user);
+  $res_check = pg_query($conn_local, $sql_check_user);
+
+  $row = pg_fetch_assoc($result)
+  $_SESSION['']
   if (pg_num_rows($res_check) > 0){
     echo "User exists. Go to main !!!";+
     header('refresh:0;url=main.php'); 

@@ -22,15 +22,32 @@
     <title>Document</title>
 </head>
 <body>
-    <form name = "edit_user_form" action = "update_user.php" method = "post"> 
-        <tr><td><input type="text" name = "ide_number" value = "<?php echo"$user_id"?>" readonly required></td></tr>    
-        <tr><td><label>Ide_number: </label></td></tr>
-        <tr><td><input type="text" name = "ide_number" value = "<?php echo"$ide_number"?>" readonly required></td></tr>    
-        <tr><td><label>Firstname: </label></td></tr>
-        <tr><td><input type="text" name = "fname" value = "<?php echo"$fname"?>" required></td></tr>
-        <tr><td><label>Lastname: </label></td> 
-        <tr><td><input type="text" name = "lname" value = "<?php echo"$lname"?>" required></td></tr>
-        <tr><td><button>Register</button></td></tr>
-    </form>
+    <center><form name="edit-user-form" action = "update_user.php" method = "post">   
+        <input 
+            type="hidden"
+            name="iduser" 
+            value="<?php echo $user_id ?>"
+            readonly>
+            <label>Identification number: </label>
+        <input 
+            type="text" 
+            name="idenumber" aa
+            value="<?php echo $ide_number ?>"
+            readonlyaaa
+            required /><br><br>
+        <label>Firstname: </label>
+        <input 
+            type="text" 
+            name="fname" 
+            value="<?php echo $fname ?>"
+            required /><br><br>
+        <label>Lastname: </label>
+        <input 
+            type="text" 
+            name="lname" 
+            value="<?php echo $lname ?>"
+            required /><br><br>
+        <button>Update user</button>
+    </form></form> 
 </body>
 </html>
