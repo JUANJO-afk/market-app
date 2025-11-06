@@ -1,6 +1,12 @@
 <?php
     //Step 1. get database connection
     require('../config/database.php');
+
+    session_start();
+  
+    if(!isset($_SESSION['session_user_id'])){
+        header('refresh:0;url=signin.html');
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +29,7 @@
             <th>Options </th>    
         </tr>
         <?php
+
             $sql_users= "
                 select 
                     u.id as user_id,

@@ -4,11 +4,11 @@
   
   //Create star session
   session_start();
-  
-  if(isset($_SESSION('session_user_id'))){
+  if(isset($_SESSION['session_user_id'])){
     header('refresh:0;url=main.php');
-  } else{
-  }
+  } /*else{
+    header('refresh:0;url=error_403.html');
+  }*/
 
   //Step 2. get form-data
   $e_mail = trim($_POST['email']);
@@ -21,7 +21,8 @@
 
   $sql_check_user = "
     select
-      u.id
+      u.id,
+      u.firstname || ' ' || u.lastname as fullname,
 	    u.email,
 	    u.password
     from 
@@ -34,8 +35,10 @@
   //Step 4
   $res_check = pg_query($conn_local, $sql_check_user);
 
-  $row = pg_fetch_assoc($result)
-  $_SESSION['']
+  $row = pg_fetch_assoc($res_check);
+  $_SESSION['session_user_id']= $row['id'];
+  $_SESSION['session_user_fullname']= $row['fullname'];
+
   if (pg_num_rows($res_check) > 0){
     echo "User exists. Go to main !!!";+
     header('refresh:0;url=main.php'); 

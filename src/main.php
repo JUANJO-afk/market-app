@@ -3,8 +3,8 @@
 
     session_start();
   
-    if(isset($_SESSION('session_user_id'))){
-        header('refresh:0;url=signin.html');
+    if(!isset($_SESSION['session_user_id'])){
+        header('refresh:0;url=error_403.html');
     }
 ?>
 <!DOCTYPE html>
@@ -17,7 +17,7 @@
     <link rel   ="icon" type "image/png" href="src/icons/market_main.png"/>
 </head>
 <body>
-    <center><b>User: </b>Here print your name</center>
+    <center><b>User: </b><?php echo $_SESSION['session_user_fullname']; ?></center>
     <a href="List_users.php">List all users</a> //
     <a href="logout.php">Logout</a>
 </body>
