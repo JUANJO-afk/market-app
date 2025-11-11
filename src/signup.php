@@ -2,13 +2,14 @@
 
   //Step 1. get database connection
   require('../config/database.php');
-  //Step 2. get form-data
+  //Step 2. get form-data pay load
   $f_name = trim($_POST['fname']);
   $l_name = trim($_POST['lname']);
   $m_number = trim($_POST['mnumber']);
   $id_number = trim($_POST['idnumber']);
   $e_mail = trim($_POST['email']);
   $p_wd = trim($_POST['passwd']);
+  $url_photo = "photos/user_default.png";
 
   //$enc_pass = password_hash($p_wd, PASSWORD_DEFAULT);
   $enc_pass = md5($p_wd);
@@ -37,14 +38,16 @@
             mobile_number,
             ide_number,
             email,
-            password)
+            password,
+            url_photo)
           values (
             '$f_name',
             '$l_name',
             '$m_number',
             '$id_number',
             '$e_mail',
-            '$enc_pass'
+            '$enc_pass',
+            '$url_photo'
           )
       ";
     //Step 4.
