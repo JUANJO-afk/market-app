@@ -17,7 +17,15 @@
     <link rel   ="icon" type "image/png" href="src/icons/market_main.png"/>
 </head>
 <body>
-    <center><b>User: </b><?php echo $_SESSION['session_user_fullname']; ?></center>
+<table border= "0" align ="center">
+    <tr>
+    <b>User: </b>
+    <td><?php echo $_SESSION['session_user_fullname']; ?>
+    <td><?php echo "<img src='" .$_SESSION['session_user_url_photo']."' width='30'>";?></td>
+    
+</td>
+    </tr>
+</table>
     <a href="List_users.php">List all users</a> //
     <a href="logout.php">Logout</a>
 </body>
